@@ -4,9 +4,11 @@ import cors from 'cors';
 import next from 'next';
 import Pusher from 'pusher';
 import express from 'express';
-import { json, urlencoded } from 'body-parser';
-const dotenv = require('dotenv').config();
+import pkg from 'body-parser';
+const { json, urlencoded } = pkg;
 import Sentiment from 'sentiment';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const dev = process.env.NODE_ENV !== 'production';
 const port = process.env.PORT || 3000;
