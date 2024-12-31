@@ -1,17 +1,22 @@
 /* next.config.js */
     
-const webpack = require('webpack');
-require('dotenv').config();
+import webpack from 'webpack';
+import dotenv from 'dotenv';
 
-module.exports = {
-  webpack: config => {
+// Load environment variables
+dotenv.config();
+
+export default {
+  webpack: (config) => {
+    // Map environment variables for DefinePlugin
     const env = Object.keys(process.env).reduce((acc, curr) => {
       acc[`process.env.${curr}`] = JSON.stringify(process.env[curr]);
       return acc;
     }, {});
-    
+
+    // Add DefinePlugin to plugins
     config.plugins.push(new webpack.DefinePlugin(env));
-    
+
     return config;
-  }
+  },
 };
