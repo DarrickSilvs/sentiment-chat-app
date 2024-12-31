@@ -17,6 +17,11 @@ export default {
     // Add DefinePlugin to plugins
     config.plugins.push(new webpack.DefinePlugin(env));
 
+    // Disable Webpack's filesystem cache
+    config.cache = {
+      type: 'memory',
+    };
+
     return config;
   },
 };
