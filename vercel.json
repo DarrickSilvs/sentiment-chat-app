@@ -5,7 +5,7 @@
         "headers": [
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; connect-src 'self' https://api.example.com; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com; script-src 'self' 'unsafe-inline'; object-src 'none';"
+            "value": "default-src 'self'; connect-src 'self' https://api.example.com wss://ws-ap4.pusher.com https://sockjs-ap4.pusher.com; style-src 'self' 'unsafe-inline' https://maxcdn.bootstrapcdn.com; script-src 'self' 'unsafe-inline'; object-src 'none';"
           }
         ]
       }
