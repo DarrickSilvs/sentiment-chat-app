@@ -44,10 +44,25 @@ export default {
     // Add DefinePlugin to plugins
     config.plugins.push(new webpack.DefinePlugin(env));
 
+    // Add polyfills for Pusher WebSocket (if needed)
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false, // Avoid issues with fs module on the client
+      };
+    }
+
     // Disable Webpack's filesystem cache
     config.cache = {
       type: 'memory',
     };
+
+    // Adjust the devtool based on the environment
+    if (!dev) {
+      config.devtool = false; // Disable source maps in production
+    } else {
+      config.devtool = 'source-map'; // Use safer option in development
+    }
 
     return config;
   },
