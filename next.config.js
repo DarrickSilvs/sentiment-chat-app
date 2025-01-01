@@ -23,23 +23,5 @@ export default {
     };
 
     return config;
-  },
-
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: `
-              default-src 'self';
-              script-src 'self' 'unsafe-eval';
-              connect-src 'self' https://*.pusher.com wss://*.pusher.com;
-            `.replace(/\s{2,}/g, ' ').trim(),
-          },
-        ],
-      },
-    ];
   },  
 };
