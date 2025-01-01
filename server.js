@@ -50,6 +50,8 @@ app.prepare()
       
       chatHistory.messages.push(chat);
       pusher.trigger('chat-room', 'new-message', { chat });
+
+      res.json({ status: 'success', chat });
     });
     
     server.post('/messages', (req, res, next) => {
