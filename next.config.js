@@ -49,13 +49,21 @@ export default {
       type: 'memory',
     };
 
-    // Adjust the devtool based on the environment
-    if (!dev) {
-      config.devtool = false; // Disable source maps in production
-    } else {
-      config.devtool = 'source-map'; // Use safer option in development
-    }
-
     return config;
+  },
+
+  // Adjust headers (CSP) for Vercel deployment or production setup
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; script-src 'self' 'unsafe-inline'; object-src 'none'; style-src 'self' 'unsafe-inline';",
+          },
+        ],
+      },
+    ];
   },
 };
