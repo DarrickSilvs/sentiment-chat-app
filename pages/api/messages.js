@@ -1,8 +1,9 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
-      res.json({ ...chatHistory, status: 'success' });
+        res.json({ ...chatHistory, status: 'success' });
     } else {
-      res.status(405).json({ error: 'Method not allowed' });
+        res.setHeader('Allow', ['POST']);
+        res.status(405).json({ error: `Method ${req.method} not allowed` });
     }
   }
   

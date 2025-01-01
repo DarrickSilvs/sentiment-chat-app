@@ -24,6 +24,7 @@ export default function handler(req, res) {
 
     res.json({ status: 'success', chat });
   } else {
-    res.status(405).json({ error: 'Method not allowed' });
+    res.setHeader('Allow', ['POST']);
+    res.status(405).json({ error: `Method ${req.method} not allowed` });
   }
 }
