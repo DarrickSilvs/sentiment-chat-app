@@ -22,6 +22,13 @@ export default {
       type: 'memory',
     };
 
+    // Adjust the devtool based on the environment
+    if (!dev) {
+      config.devtool = false; // Disable source maps in production
+    } else {
+      config.devtool = 'source-map'; // Use safer option in development
+    }
+
     return config;
   },  
 };
